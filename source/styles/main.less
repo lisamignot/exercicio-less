@@ -1,0 +1,123 @@
+@import "mapas.less";
+@import "variaveis.less";
+
+.textButtons {
+    color: #colors[textColor];
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+} 
+
+@breakpointTablet: ~"(min-width:768px) and (max-width: 1023px)";
+@breakpointMobile: ~"(max-width: 767px)";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    background-color: #colors[backgroundColor];
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: @tamanhoTotal;
+    margin: 0 auto;
+
+    @media @breakpointMobile {
+        max-width: (@tamanhoTotal - 30%);
+
+        .products {
+            display: block;
+
+            &-item  {
+                margin-bottom: 32px;
+            }
+        }   
+    }
+
+    @media @breakpointTablet {
+        max-width: (@tamanhoTotal - 20%);
+        
+        .products {
+            grid-template-columns: repeat(2, 48.5%);
+            column-gap: 3%;
+        }
+    }
+}
+
+header {
+    background-color: #colors[primaryColor];
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+
+        .menu-principal {
+            display: flex;
+            padding: 16px;
+    
+            a {
+                .textButtons();
+                padding-left: 16px;
+            }
+        }       
+    } 
+}
+
+section {
+    padding: 56px 0;
+
+    h4 {
+        text-align: center;
+        padding: 8px 0;
+    }
+}
+
+.products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: @tamanhoTotal;
+    
+        &-item img {
+            width: @tamanhoTotal;
+            border-radius: 16px;
+        }
+
+        &-button {
+            .textButtons();
+            display: block;
+            background-color: #colors[primaryColor];
+            padding: 8px 0;
+            border-radius: 8px;
+            margin-top: 8px;
+            border: 3px solid #colors[primaryColor];
+            transition: all ease 0.3s;
+            
+            &:hover {
+                color: #colors[primaryColor];
+                background-color: transparent;
+            }
+        }
+}
+
+
+
+
